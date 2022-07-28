@@ -2,5 +2,3 @@ INFO: [VRFC 10-2263] Analyzing Verilog file "D:/Verliog/RV32I/RV32I.srcs/sources
 INFO: [VRFC 10-311] analyzing module alu
 INFO: [VRFC 10-2263] Analyzing Verilog file "D:/Verliog/RV32I/RV32I.srcs/sim_1/new/alu_tb.v" into library xil_defaultlib
 INFO: [VRFC 10-311] analyzing module alu_tb
-INFO: [VRFC 10-2263] Analyzing Verilog file "D:/Verliog/RV32I/RV32I.sim/sim_1/behav/xsim/glbl.v" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module glbl
