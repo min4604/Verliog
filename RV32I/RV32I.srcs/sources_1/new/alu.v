@@ -24,6 +24,7 @@ module alu(
     input [31:0] rs1,
     input [31:0] rs2,
     input [15:0] op,
+    input [31:0] imm,
     output [31:0] out
     );
     reg [31:0] buff;
@@ -59,7 +60,7 @@ module alu(
             end
         16'h0333 : buff = rs1|rs2;                                           //or       
         16'h03b3 : buff = rs1&rs2;                                           //and 
-       
+        16'h0013 : buff = rs1 +imm[11:0];
         
     
         default :buff=32'h0000;

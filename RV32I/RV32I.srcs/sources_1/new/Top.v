@@ -21,6 +21,8 @@
 
 
 module Top(
+    input [31:0] INST
+
 
     );
 endmodule

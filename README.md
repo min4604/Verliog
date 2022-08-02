@@ -1,2 +1,3 @@
 # firstVerilog
-# ouo 講解R-TYPE 指令 希望將其加入PPT
+# RV32I alu +d ecode + memory 
+# RV32I add top_tb
