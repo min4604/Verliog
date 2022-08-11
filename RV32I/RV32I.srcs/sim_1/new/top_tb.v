@@ -21,7 +21,7 @@
 
 
 module top_tb();
-    reg [31:0] INST;
+    wire [31:0] INST;
     wire [31:0] a, b,rd_dt;        // = input
     
     wire [15:0] opcode;
@@ -29,21 +29,23 @@ module top_tb();
     wire [31:0] imm;
     reg clk;
     reg res;
-    decode _decode(INST,opcode,rd_a,rs1_a,rs2_a,imm);
-    regfile _regfile(.rest(res),.we(1'b1),.rs1_a(rs1_a),.rs2_a(rs2_a),.rd_a(rd_a),.rd_dt(rd_dt),.rs1_dt(a),.rs2_dt(b));
-    alu _alu (a, b,opcode , imm,rd_dt);
+    wire [31:0] pc_dt;
+    wire [31:0]pc_old;
+    wire pe_en;
     
+    pc              _pc(clk,res,pc_en,pc_dt,pc_old);
+    instr_memory    _instr_memory(pc_dt,pc_en,INST);
+    decode          _decode(INST,opcode,rd_a,rs1_a,rs2_a,imm);
+    regfile         _regfile(.rest(res),.we(1'b1),.rs1_a(rs1_a),.rs2_a(rs2_a),.rd_a(rd_a),.rd_dt(rd_dt),.rs1_dt(a),.rs2_dt(b));
+    alu             _alu (a, b,opcode , imm,rd_dt);
     
     initial begin
-        res =1'b0;                                            // initial
-        
-        #1 INST = 32'h00900513;
-        #1 INST = 32'h00600593;
-        #1 INST = 32'h00b50633;
-        #1 INST = 32'h40b506b3;
-        #1 INST = 32'h00d67733;
-        #1 $stop;
-        #1 $finish;
+        clk = 0;
+        res = 0;
+        #1 res =1;
+        forever #1 clk = ~clk;
     end
+    
+    
     
 endmodule
