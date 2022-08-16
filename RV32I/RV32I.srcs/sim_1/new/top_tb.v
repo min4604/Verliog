@@ -21,23 +21,11 @@
 
 
 module top_tb();
-    wire [31:0] INST;
-    wire [31:0] a, b,rd_dt;        // = input
     
-    wire [15:0] opcode;
-    wire [4:0] rd_a ,rs1_a,rs2_a;
-    wire [31:0] imm;
     reg clk;
     reg res;
-    wire [31:0] pc_dt;
-    wire [31:0]pc_old;
-    wire pe_en;
-    
-    pc              _pc(clk,res,pc_en,pc_dt,pc_old);
-    instr_memory    _instr_memory(pc_dt,pc_en,INST);
-    decode          _decode(INST,opcode,rd_a,rs1_a,rs2_a,imm);
-    regfile         _regfile(.rest(res),.we(1'b1),.rs1_a(rs1_a),.rs2_a(rs2_a),.rd_a(rd_a),.rd_dt(rd_dt),.rs1_dt(a),.rs2_dt(b));
-    alu             _alu (a, b,opcode , imm,rd_dt);
+   
+    Top _top(clk,res);
     
     initial begin
         clk = 0;
@@ -46,6 +34,10 @@ module top_tb();
         forever #1 clk = ~clk;
     end
     
-    
+     initial begin
+         #50 $stop;
+        #1 $finish;
+      end
+
     
 endmodule

@@ -26,9 +26,9 @@ module instr_memory(
     output [31:0] INST
     );
 
-//reg [7:0] INST_memory[0:1023];
+reg [7:0] INST_memory[0:1023];
 
-initial $readmemb("INSTR_rom",INST_memory);
+initial $readmemh("D:/Verliog/INST_rom.txt",INST_memory);
 
 /*initial begin
     {INST_memory[0],INST_memory[1],INST_memory[2],INST_memory[3]}=32'h00900513;
