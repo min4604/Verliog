@@ -24,7 +24,6 @@ module alu(
     input [31:0] rs1,
     input [31:0] rs2,
     input [15:0] op,
-    input [31:0] imm,
     output [31:0] out
     );
     reg [31:0] buff;
@@ -39,7 +38,7 @@ module alu(
     always @(*)
     begin
         case(op)
-        16'h0033 : buff = rs1+rs2;                                           //add
+        16'h0033 , 16'h0013,16'h006f: buff = rs1+rs2;                        //add
         16'h8033 : buff = rs1-rs2;                                           //sub
         16'h00b3 : buff = rs1 << rs2[4:0];                                   //sll
         16'h0133 : buff = (signed_rs1 < signed_rs2)? 32'h0001 : 32'h0000;    //slt
@@ -60,7 +59,6 @@ module alu(
             end
         16'h0333 : buff = rs1|rs2;                                           //or       
         16'h03b3 : buff = rs1&rs2;                                           //and 
-        16'h0013 : buff = rs1 +imm[11:0];
         
     
         default :buff=32'h0000;

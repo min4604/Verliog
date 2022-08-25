@@ -26,6 +26,12 @@ module decode(
 	output [4:0] rd,
 	output [4:0] rs1,
 	output [4:0] rs2,
+    output reg rd_en,
+    output reg rs1_en,
+    output reg rs2_en,
+    output reg rs2_sw,
+    output reg jmp_enable,
+    output reg pc_enable,
 	output [31:0] imm
 	
     );
@@ -46,6 +52,12 @@ module decode(
                 rs1_buf     = INST[19:15];
                 rs2_buf     = INST[24:20];
                 imm_buf     = 32'hdeadbeef;
+                rd_en       = 1'b1;
+                rs1_en      = 1'b1;
+                rs2_en      = 1'b1;
+                rs2_sw      = 1'b1;
+                jmp_enable  = 1'b0;
+                pc_enable   = 1'b0;
             end
         7'b0010011 : //I-TYPE-1
             begin
@@ -53,7 +65,13 @@ module decode(
                 rd_buf      = INST[11:7];
                 rs1_buf     = INST[19:15];
                 rs2_buf     = 5'b00000;
-                imm_buf     = {21'b000000000000000000000,INST[31:20]};    //?��?��要�?�兩種在??�確�?
+                imm_buf     = {21'b000000000000000000000,INST[31:20]};
+                rd_en       = 1'b1;
+                rs1_en      = 1'b1;
+                rs2_en      = 1'b0;
+                rs2_sw      = 1'b0; 
+                jmp_enable  = 1'b0; 
+                pc_enable   = 1'b0;  
             end
         7'b0000011 : //Itype-2
             begin
@@ -62,6 +80,12 @@ module decode(
                 rs1_buf      = INST[19:15];
                 rs2_buf     = 5'b00000;
                 imm_buf     = {21'b000000000000000000000,INST[31:20]};
+                rd_en       = 1'b1;
+                rs1_en      = 1'b1;
+                rs2_en      = 1'b0;
+                rs2_sw      = 1'b0; 
+                jmp_enable  = 1'b0;  
+                pc_enable   = 1'b0; 
             end
         7'b0100011 : //S-TYPE
             begin
@@ -103,6 +127,12 @@ module decode(
                 rs1_buf     = 5'b00000;
                 rs2_buf     = 5'b00000;
                 imm_buf     = {11'b00000000000,INST[31],INST[19:12],INST[20],INST[30:21],1'b0};
+                rd_en       = 1'b1;
+                rs1_en      = 1'b0;
+                rs2_en      = 1'b0;
+                rs2_sw      = 1'b0; 
+                jmp_enable  = 1'b1; 
+                pc_enable   = 1'b1;  
             end
         7'b1100111 : //I-TYPE jalr
             begin

@@ -22,7 +22,7 @@
 
 module instr_memory(
     input [31:0] Addr,
-    output pc_en,
+    //output pc_en,
     output [31:0] INST
     );
 
@@ -40,7 +40,7 @@ initial $readmemh("D:/Verliog/INST_rom.txt",INST_memory);
 end*/
 
 assign INST={INST_memory[Addr],INST_memory[Addr+1],INST_memory[Addr+2],INST_memory[Addr+3]};
-assign pc_en =(INST==32'h00000000)?  1'b0 : 1'b1;
+//assign pc_en =(INST==32'h00000000)?  1'b0 : 1'b1;
 
 
 

@@ -11,15 +11,15 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="0fs"></ZoomStartTime>
-      <ZoomEndTime time="50000001fs"></ZoomEndTime>
-      <Cursor1Time time="50000000fs"></Cursor1Time>
+      <ZoomStartTime time="5302100fs"></ZoomStartTime>
+      <ZoomEndTime time="10939581fs"></ZoomEndTime>
+      <Cursor1Time time="10000000fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="175"></NameColumnWidth>
-      <ValueColumnWidth column_width="138"></ValueColumnWidth>
+      <ValueColumnWidth column_width="122"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="6" />
+   <WVObjectSize size="13" />
    <wvobject fp_name="/top_tb/clk" type="logic">
       <obj_property name="ElementShortName">clk</obj_property>
       <obj_property name="ObjectShortName">clk</obj_property>
@@ -28,21 +28,49 @@
       <obj_property name="ElementShortName">res</obj_property>
       <obj_property name="ObjectShortName">res</obj_property>
    </wvobject>
-   <wvobject fp_name="/top_tb/_top/_pc/pc_dt" type="array">
-      <obj_property name="ElementShortName">pc_dt[31:0]</obj_property>
-      <obj_property name="ObjectShortName">pc_dt[31:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/top_tb/_top/_pc/pc_old" type="array">
-      <obj_property name="ElementShortName">pc_old[31:0]</obj_property>
-      <obj_property name="ObjectShortName">pc_old[31:0]</obj_property>
+   <wvobject fp_name="/top_tb/_top/pc" type="array">
+      <obj_property name="ElementShortName">pc[31:0]</obj_property>
+      <obj_property name="ObjectShortName">pc[31:0]</obj_property>
    </wvobject>
    <wvobject fp_name="/top_tb/_top/_instr_memory/INST" type="array">
       <obj_property name="ElementShortName">INST[31:0]</obj_property>
       <obj_property name="ObjectShortName">INST[31:0]</obj_property>
    </wvobject>
-   <wvobject fp_name="/top_tb/_top/_regfile/memorydt" type="array">
-      <obj_property name="ElementShortName">memorydt[0:1024][31:0]</obj_property>
-      <obj_property name="ObjectShortName">memorydt[0:1024][31:0]</obj_property>
+   <wvobject fp_name="/top_tb/_top/opcode" type="array">
+      <obj_property name="ElementShortName">opcode[15:0]</obj_property>
+      <obj_property name="ObjectShortName">opcode[15:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_tb/_top/rs2_sw" type="logic">
+      <obj_property name="ElementShortName">rs2_sw</obj_property>
+      <obj_property name="ObjectShortName">rs2_sw</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_tb/_top/imm" type="array">
+      <obj_property name="ElementShortName">imm[31:0]</obj_property>
+      <obj_property name="ObjectShortName">imm[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_tb/_top/reg_rs2" type="array">
+      <obj_property name="ElementShortName">reg_rs2[31:0]</obj_property>
+      <obj_property name="ObjectShortName">reg_rs2[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_tb/_top/a" type="array">
+      <obj_property name="ElementShortName">a[31:0]</obj_property>
+      <obj_property name="ObjectShortName">a[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_tb/_top/b" type="array">
+      <obj_property name="ElementShortName">b[31:0]</obj_property>
+      <obj_property name="ObjectShortName">b[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_tb/_top/rd_dt" type="array">
+      <obj_property name="ElementShortName">rd_dt[31:0]</obj_property>
+      <obj_property name="ObjectShortName">rd_dt[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_tb/_top/register/rs1_addr" type="array">
+      <obj_property name="ElementShortName">rs1_addr[4:0]</obj_property>
+      <obj_property name="ObjectShortName">rs1_addr[4:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_tb/_top/register/regfile" type="array">
+      <obj_property name="ElementShortName">regfile[0:31][31:0]</obj_property>
+      <obj_property name="ObjectShortName">regfile[0:31][31:0]</obj_property>
       <obj_property name="isExpanded"></obj_property>
    </wvobject>
 </wave_config>

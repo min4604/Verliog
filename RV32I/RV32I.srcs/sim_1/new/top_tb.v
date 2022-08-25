@@ -35,7 +35,7 @@ module top_tb();
     end
     
      initial begin
-         #50 $stop;
+        #900 $stop;
         #1 $finish;
       end
 
