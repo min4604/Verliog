@@ -1,5 +1,6 @@
 # compile verilog/system verilog design source files
 verilog xil_defaultlib  \
+"../../../../RV32I.srcs/sources_1/new/MUX2to1_32bit.v" \
 "../../../../RV32I.srcs/sources_1/new/alu.v" \
 "../../../../RV32I.srcs/sources_1/new/cpu.v" \
 "../../../../RV32I.srcs/sources_1/new/decoder.v" \

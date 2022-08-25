@@ -15,13 +15,15 @@ module pc(
         end
         else if(jmp_enable)
         begin
-           pc_next  <=jump_addr+3'b100;
            pc       <=jump_addr;
+           pc_next  <=jump_addr+3'b100;
+           
         end
         else
         begin
-           pc_next  <=pc_next+3'b100;
            pc       <=pc_next;
+           pc_next  <=pc_next+3'b100;
+           
         end
     end
 

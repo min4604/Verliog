@@ -1,56 +1,24 @@
-`timescale 1ns / 1ps
-//////////////////////////////////////////////////////////////////////////////////
-// Company: 
-// Engineer: 
-// 
-// Create Date: 08/09/2022 08:57:20 PM
-// Design Name: 
-// Module Name: pc
-// Project Name: 
-// Target Devices: 
-// Tool Versions: 
-// Description: 
-// 
-// Dependencies: 
-// 
-// Revision:
-// Revision 0.01 - File Created
-// Additional Comments:
-// 
-//////////////////////////////////////////////////////////////////////////////////
-
-
 module pc(
     input clk,
-    input res,
-    input En,
-    output [31:0] pc,
-    output [31:0] pc_old
-   
-    );
-    reg [31:0] pc_reg =32'h00000000;
-    reg [31:0] pc_old_reg;
-
-    always @(posedge clk or negedge res)
-    begin
-        if(res==1'b1)
-        begin
-            pc_reg =0;
-            pc_old_reg =0;
+    input reset,
+    input [31:0] jmp,
+    input en,
+    output reg [31:0] pc_next,
+    output reg [31:0] pc
+);
+    always @(posedge clk or negedge reset) begin
+        if(!reset) begin
+            pc      <= 0;
+            pc_next <= 0;
         end
-        else if(En==1'b1)
-        begin
-            pc_reg<=pc_reg+3'b100;
-            pc_old_reg<=pc_reg;
+        else if (en) begin
+            pc      <= jmp;
+            pc_next <= jmp + 3'h4;
         end
-        else
-        begin
-            pc_reg=pc_reg;
+        else begin
+            pc      <= pc_next;
+            pc_next <= pc_next + 3'h4;
         end
-
     end
-    assign pc=pc_reg;
-    assign pc_old =pc_old_reg;
-
 
 endmodule

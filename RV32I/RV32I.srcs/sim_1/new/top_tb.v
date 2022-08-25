@@ -30,11 +30,11 @@ module top_tb();
     initial begin
         clk = 0;
         res = 0;
-        #1 res =1;
         forever #1 clk = ~clk;
     end
     
      initial begin
+        #3 res =1;
         #900 $stop;
         #1 $finish;
       end

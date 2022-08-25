@@ -126,7 +126,7 @@ module decode(
                 rd_buf      = INST[11:7];
                 rs1_buf     = 5'b00000;
                 rs2_buf     = 5'b00000;
-                imm_buf     = {11'b00000000000,INST[31],INST[19:12],INST[20],INST[30:21],1'b0};
+                imm_buf     = {{11{INST[31]}},INST[31],INST[19:12],INST[20],INST[30:21],1'b0};
                 rd_en       = 1'b1;
                 rs1_en      = 1'b0;
                 rs2_en      = 1'b0;
