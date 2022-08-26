@@ -38,12 +38,12 @@ module alu(
     always @(*)
     begin
         case(op)
-        16'h0033 , 16'h0013,16'h006f: buff = rs1+rs2;                        //add
-        16'h8033 : buff = rs1-rs2;                                           //sub
-        16'h00b3 : buff = rs1 << rs2[4:0];                                   //sll
-        16'h0133 : buff = (signed_rs1 < signed_rs2)? 32'h0001 : 32'h0000;    //slt
-        16'h01b3 : buff = (rs1 < rs2)? 32'h0001 : 32'h0000;                  //sltu
-        16'h0233 : buff = rs1^rs2;                                           //xor 
+        16'h0033 , 16'h0013,16'h006f,16'h0067: buff = rs1+rs2;                          //add
+        16'h8033 : buff = rs1-rs2;                                                      //sub
+        16'h00b3 : buff = rs1 << rs2[4:0];                                              //sll
+        16'h0133,16'h0113 : buff = (signed_rs1 < signed_rs2)? 32'h0001 : 32'h0000;      //slt
+        16'h01b3,16'h0193 : buff = (rs1 < rs2)? 32'h0001 : 32'h0000;                    //sltu
+        16'h0233,16'h0213 : buff = rs1^rs2;                                             //xor 
         16'h02b3 : buff = rs1 >> rs2[4:0];                                   //srl
         16'h82b3 :                                                           //sra
             begin
@@ -57,8 +57,8 @@ module alu(
                         buff =rs1 >> rs2[4:0];
                     end
             end
-        16'h0333 : buff = rs1|rs2;                                           //or       
-        16'h03b3 : buff = rs1&rs2;                                           //and 
+        16'h0333,16'h0313 : buff = rs1|rs2;                                           //or       
+        16'h03b3,16'h0393 : buff = rs1&rs2;                                           //and 
         
     
         default :buff=32'h0000;

@@ -140,7 +140,13 @@ module decode(
                 rd_buf      = INST[11:7];
                 rs1_buf     = INST[19:15];
                 rs2_buf     = 5'b00000;
-                imm_buf     = {20'b00000000000000000000,INST[31:20]};
+                imm_buf     = {{20{INST[31]}},INST[31:20]};
+                rd_en       = 1'b1;
+                rs1_en      = 1'b1;
+                rs2_en      = 1'b0;
+                rs2_sw      = 1'b0; 
+                jmp_enable  = 1'b1; 
+                pc_enable   = 1'b0;  
             end
 		default : opcode_buf =16'b0000000000000000;
 	    endcase
