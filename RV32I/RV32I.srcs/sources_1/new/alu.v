@@ -38,7 +38,7 @@ module alu(
     always @(*)
     begin
         case(op)
-        16'h0033 , 16'h0013,16'h006f,16'h0067: buff = rs1+rs2;                          //add
+        16'h0033 , 16'h0013,16'h006f,16'h0067,16'h0063,16'h00e3,16'h0163,16'h02e3,16'h0363,16'h3e3: buff = rs1+rs2;                          //add
         16'h8033 : buff = rs1-rs2;                                                      //sub
         16'h00b3 : buff = rs1 << rs2[4:0];                                              //sll
         16'h0133,16'h0113 : buff = (signed_rs1 < signed_rs2)? 32'h0001 : 32'h0000;      //slt

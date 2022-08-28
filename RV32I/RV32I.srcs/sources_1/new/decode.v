@@ -101,8 +101,13 @@ module decode(
                 rd_buf      = 5'b00000;
                 rs1_buf     = INST[19:15];
                 rs2_buf     = INST[24:20];
-                imm_buf     ={20'b00000000000000000000,INST[31],INST[7],INST[30:25],INST[11:8],1'b0};
-
+                imm_buf     ={{20{INST[31]}},INST[31],INST[7],INST[30:25],INST[11:8],1'b0};
+                rd_en       = 1'b0;
+                rs1_en      = 1'b1;
+                rs2_en      = 1'b1;
+                rs2_sw      = 1'b0; 
+                jmp_enable  = 1'b0; 
+                pc_enable   = 1'b1;  
             end
         7'b0110111 : //U-TYPE lui
             begin

@@ -4,6 +4,7 @@ module pc(
 
     input  [31:0]   jump_addr,
     input           jmp_enable,
+    input           branch_en,
 
     output reg [31:0]   pc_next,
     output reg [31:0]   pc
@@ -13,7 +14,7 @@ module pc(
             pc      <= 0;
             pc_next <= 0;
         end
-        else if(jmp_enable)
+        else if(jmp_enable | branch_en)
         begin
            pc       <=jump_addr;
            pc_next  <=jump_addr+3'b100;

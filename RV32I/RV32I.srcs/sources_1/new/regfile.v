@@ -47,7 +47,7 @@ module regfile(
     always@(*) begin
         if(!r2_enable)
             rs2 = 0;
-        else if (r2_enable && rs1_addr != 0) begin
+        else if (r2_enable && rs2_addr != 0) begin
             /*if(rd_enable && rs2_addr == rd_addr)
                 rs2 = rd_data;
             else
@@ -55,7 +55,7 @@ module regfile(
             rs2 = regfile[rs2_addr];
         end
         else
-            rs1 = 0;
+            rs2 = 0;
     end
 
 endmodule

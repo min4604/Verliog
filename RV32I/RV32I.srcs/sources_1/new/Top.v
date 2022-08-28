@@ -36,16 +36,17 @@ module Top(
     wire [31:0] pc;
     wire [31:0] pc_next;
     wire jmp_enable;
+    wire brabch_en;
     wire pc_enable;
     wire rd_en;
     wire rs1_en;
     wire rs2_en;
     wire rs2_sw;
 
-    pc              _pc(clk,rst,rd_dt,jmp_enable,pc_next,pc);
+    pc              _pc(clk,rst,rd_dt,jmp_enable,brabch_en,pc_next,pc);
     instr_memory    _instr_memory(pc,INST);
     decode          _decode(INST,opcode,rd_a,rs1_a,rs2_a,rd_en,rs1_en,rs2_en,rs2_sw,jmp_enable,pc_enable,imm);
-    
+    branch          _branch(opcode,reg_rs1,reg_rs2,brabch_en);
     regfile register(
         // self
         .clk(clk),

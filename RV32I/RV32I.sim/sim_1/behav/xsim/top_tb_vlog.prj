@@ -3,6 +3,7 @@ verilog xil_defaultlib  \
 "../../../../RV32I.srcs/sources_1/new/MUX2to1_32bit.v" \
 "../../../../RV32I.srcs/sources_1/new/Top.v" \
 "../../../../RV32I.srcs/sources_1/new/alu.v" \
+"../../../../RV32I.srcs/sources_1/new/branch.v" \
 "../../../../RV32I.srcs/sources_1/new/decode.v" \
 "../../../../RV32I.srcs/sources_1/new/instr_memory.v" \
 "../../../../RV32I.srcs/sources_1/new/pc.v" \
