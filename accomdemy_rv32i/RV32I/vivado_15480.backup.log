@@ -1,0 +1,22 @@
+#-----------------------------------------------------------
+# Vivado v2019.1 (64-bit)
+# SW Build 2552052 on Fri May 24 14:49:42 MDT 2019
+# IP Build 2548770 on Fri May 24 18:01:18 MDT 2019
+# Start of session at: Tue Aug  2 21:12:38 2022
+# Process ID: 15480
+# Current directory: D:/Verliog/RV32I
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent10440 D:\Verliog\RV32I\RV32I.xpr
+# Log file: D:/Verliog/RV32I/vivado.log
+# Journal file: D:/Verliog/RV32I\vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project D:/Verliog/RV32I/RV32I.xpr
+Scanning sources...
+Finished scanning sources
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'E:/Xilinx/Vivado/2019.1/data/ip'.
+open_project: Time (s): cpu = 00:00:20 ; elapsed = 00:00:07 . Memory (MB): peak = 757.129 ; gain = 130.789
+update_compile_order -fileset sources_1
+exit
+INFO: [Common 17-206] Exiting Vivado at Tue Aug  2 21:59:27 2022...
