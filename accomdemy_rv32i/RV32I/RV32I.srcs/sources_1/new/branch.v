@@ -21,7 +21,7 @@
 
 
 module branch(
-    input brabch_en
+    input brabch_en,
     input [2:0] branch_op,
     input [31:0] rs1,
     input [31:0] rs2,
