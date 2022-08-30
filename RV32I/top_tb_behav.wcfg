@@ -11,15 +11,15 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="0fs"></ZoomStartTime>
-      <ZoomEndTime time="12780001fs"></ZoomEndTime>
-      <Cursor1Time time="7950000fs"></Cursor1Time>
+      <ZoomStartTime time="38472000fs"></ZoomStartTime>
+      <ZoomEndTime time="44882001fs"></ZoomEndTime>
+      <Cursor1Time time="43347000fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="175"></NameColumnWidth>
-      <ValueColumnWidth column_width="146"></ValueColumnWidth>
+      <ValueColumnWidth column_width="142"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="17" />
+   <WVObjectSize size="18" />
    <wvobject fp_name="/top_tb/clk" type="logic">
       <obj_property name="ElementShortName">clk</obj_property>
       <obj_property name="ObjectShortName">clk</obj_property>
@@ -58,6 +58,10 @@
    <wvobject fp_name="/top_tb/_top/rs2_a" type="array">
       <obj_property name="ElementShortName">rs2_a[4:0]</obj_property>
       <obj_property name="ObjectShortName">rs2_a[4:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_tb/_top/rd_a" type="array">
+      <obj_property name="ElementShortName">rd_a[4:0]</obj_property>
+      <obj_property name="ObjectShortName">rd_a[4:0]</obj_property>
    </wvobject>
    <wvobject fp_name="/top_tb/_top/reg_rs2" type="array">
       <obj_property name="ElementShortName">reg_rs2[31:0]</obj_property>

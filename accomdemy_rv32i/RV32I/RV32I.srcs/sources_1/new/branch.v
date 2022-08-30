@@ -32,65 +32,47 @@ module branch(
         if(brabch_en)
         begin
             case(opcode[9:7])
-            3'h0:                       //beq
-            begin
-                if(rs1==rs2)
-                    branch_out_en<=1;
-                else
-                    branch_out_en<=0;
-
-            end
-            3'h1:                       //ben
-            begin
-                if(rs1!=rs2)
-                    branch_out_en<=1;
-                else
-                    branch_out_en<=0;
-
-            end
-            3'h4:                       //blt
-            begin
-                if ((rs1[31] == 1) && (rs2[31] == 0))
-					branch_out_en <= 1;
-				else if ((rs1[31] == 0) && (rs2[31] == 1))
-					branch_out_en <= 0;
-				else if ((rs2[31] == 1) && (rs1[31] == 1))
-					branch_out_en <= (rs1 < rs2) ? 1 : 0;
-				else 
-					branch_out_en <= (rs1 < rs2) ? 1 : 0;
-
-            end
-            3'h5:                       //bge
-            begin
-                if ((rs1[31] == 1) && (rs2[31] == 0))
-					branch_out_en <= 0;
-				else if ((rs1[31] == 0) && (rs2[31] == 1))
-					branch_out_en <= 1;
-				else if ((rs2[31] == 1) && (rs1[31] == 1))
-					branch_out_en <= (rs1 >= rs2) ? 1 : 0;
-				else 
-					branch_out_en <= (rs1 >= rs2) ? 1 : 0;
-
-            end
-            3'h6:                       //bltu
-            begin
-                if(rs1<rs2)
-                    branch_out_en<=1;
-                else
-                    branch_out_en<=0;
-
-            end
-            3'h7:                       //bgeu
-            begin
-                if(rs1>=rs2)
-                    branch_out_en<=1;
-                else
-                    branch_out_en<=0;
-
-            end
-            default:branch_out_en<=0;
+            3'h0: //beq 
+                if ($signed(data1) == $signed(data2)) begin
+                    out = _enable;
+                end else begin
+                    out = _disable;
+                end
+            3'h1: //bne
+                if ($signed(data1) != $signed(data2)) begin
+                    out = _enable;
+                end else begin
+                    out = _disable;
+                end
+            3'h4: //blt
+                if ($signed(data1) < $signed(data2)) begin
+                    out = _enable;
+                end else begin
+                    out = _disable;
+                end
+            3'h5: //bge
+                if ($signed(data1) >= $signed(data2)) begin
+                    out = _enable;
+                end else begin
+                    out = _disable;
+                end
+            3'h6: //bltu
+                if (data1 < data2) begin
+                    out = _enable;
+                end else begin
+                    out = _disable;
+                end
+            3'h7: //bgeu
+                if (data1 >= data2) begin
+                    out = _enable;
+                end else begin
+                    out = _disable;
+                end
+            default: 
+                out = _disable;
             endcase
         end
+    end
 
 
 endmodule

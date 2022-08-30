@@ -15,7 +15,12 @@ module regfile(
 );
      
     reg        [31:0]   regfile [0:31];
-
+    integer i;
+    initial begin
+        for (i = 0; i<=31; i=i+1) begin
+            regfile[i]=32'b0;
+        end
+    end
     always@(posedge(clk)) begin
         if (!rst) 
         begin

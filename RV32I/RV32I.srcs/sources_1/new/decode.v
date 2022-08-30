@@ -65,7 +65,7 @@ module decode(
                 rd_buf      = INST[11:7];
                 rs1_buf     = INST[19:15];
                 rs2_buf     = 5'b00000;
-                imm_buf     = {21'b000000000000000000000,INST[31:20]};
+                imm_buf     = {{21{INST[31]}},INST[31:20]};
                 rd_en       = 1'b1;
                 rs1_en      = 1'b1;
                 rs2_en      = 1'b0;
@@ -79,7 +79,7 @@ module decode(
                 rd_buf      = INST[11:7];
                 rs1_buf      = INST[19:15];
                 rs2_buf     = 5'b00000;
-                imm_buf     = {21'b000000000000000000000,INST[31:20]};
+                imm_buf     = {{21{INST[31]}},INST[31:20]};
                 rd_en       = 1'b1;
                 rs1_en      = 1'b1;
                 rs2_en      = 1'b0;
@@ -101,7 +101,7 @@ module decode(
                 rd_buf      = 5'b00000;
                 rs1_buf     = INST[19:15];
                 rs2_buf     = INST[24:20];
-                imm_buf     ={{20{INST[31]}},INST[31],INST[7],INST[30:25],INST[11:8],1'b0};
+                imm_buf     ={{20{INST[31]}},INST[7],INST[30:25],INST[11:8],1'b0};
                 rd_en       = 1'b0;
                 rs1_en      = 1'b1;
                 rs2_en      = 1'b1;
@@ -153,7 +153,16 @@ module decode(
                 jmp_enable  = 1'b1; 
                 pc_enable   = 1'b0;  
             end
-		default : opcode_buf =16'b0000000000000000;
+		default : 
+        begin
+            opcode_buf =16'b0000000000000000;
+            rd_en       = 1'b0;
+            rs1_en      = 1'b0;
+            rs2_en      = 1'b0;
+            rs2_sw      = 1'b0; 
+            jmp_enable  = 1'b0; 
+            pc_enable   = 1'b0;  
+        end
 	    endcase
     end
 
