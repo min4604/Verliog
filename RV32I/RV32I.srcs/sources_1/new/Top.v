@@ -21,12 +21,14 @@
 
 
 module Top(
-    input clk,
-    input rst
+    input           clk,
+    input           rst,
+    output  [31:0]  im_addr,
+    input   [31:0]  INST
 
 
     );
-    wire [31:0] INST;
+    //wire [31:0] INST;
     wire [31:0] reg_rs2,reg_rs1,a, b,rd_dt;        // = input
     
     wire [15:0] opcode;
@@ -44,7 +46,7 @@ module Top(
     wire rs2_sw;
 
     pc              _pc(clk,rst,rd_dt,jmp_enable,brabch_en,pc_next,pc);
-    instr_memory    _instr_memory(pc,INST);
+    //instr_memory    _instr_memory(pc,INST);
     decode          _decode(INST,opcode,rd_a,rs1_a,rs2_a,rd_en,rs1_en,rs2_en,rs2_sw,jmp_enable,pc_enable,imm);
     branch          _branch(opcode,reg_rs1,reg_rs2,brabch_en);
     regfile register(
@@ -69,5 +71,5 @@ module Top(
     MUX2to1_32bit   _imm_MUX(rs2_sw,imm,reg_rs2,b);
     MUX2to1_32bit   _PC_MUX(pc_enable,reg_rs1,pc,a);
     alu             _alu (a, b,opcode ,rd_dt);
-
+    assign im_addr =pc;
 endmodule

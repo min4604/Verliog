@@ -24,8 +24,12 @@ module top_tb();
     
     reg clk;
     reg res;
-   
-    Top _top(clk,res);
+    
+    wire [31:0] pc;
+    wire [31:0] INST;
+
+    instr_memory    _instr_memory(pc,INST);
+    Top _top(clk,res,pc,INST);
     
     initial begin
         clk = 0;
